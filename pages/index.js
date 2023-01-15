@@ -7,27 +7,31 @@ import { Container, Box, Typography, Button, CircularProgress } from '@mui/mater
 export default function Index() {
   const [loading, setLoading] = useState(false);
 
-  const getParseJD = async (file) => {
+  const getParseJD = async (pdfData) => {
     try {
+      const formData = new FormData();
+      formData.append("PDF", pdfData);
       const requestOptions = {
-        method: "GET",
-        body: file
+        method: "POST",
+        body: formData
       }
-      const url = 'http://localhost:3000/api/pdf/reader';
+      const url = 'http://localhost:3000/api/pdf/parser';
       await fetch(url, requestOptions)
         .then((response) => response.json())
         .then((data) => {
           if (data.status === 200) {
+            // console.log(data)
             setLoading(false);
-            console.log(data)
           }
           else {
             console.log(data);
+            setLoading(false);
           }
         })
     }
     catch (error) {
       console.log(error);
+      setLoading(false);
     }
   }
 
@@ -35,7 +39,6 @@ export default function Index() {
     e.preventDefault();
     setLoading(true);
     const file = e.target.files[0];
-    e.target.value = null;
     getParseJD(file);
   }
 
