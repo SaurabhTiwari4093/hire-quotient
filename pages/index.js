@@ -27,7 +27,6 @@ export default function Index() {
               pathname:'/parseResult',
               query:{keywords:data.pdfText}
             })
-            setLoading(false);
           }
           else {
             console.log(data);
