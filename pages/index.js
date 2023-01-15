@@ -17,7 +17,7 @@ export default function Index() {
         method: "POST",
         body: formData
       }
-      const url = 'http://localhost:3000/api/pdf/parser';
+      const url = 'https://hire-quotient.azurewebsites.net/api/pdf/parser';
       await fetch(url, requestOptions)
         .then((response) => response.json())
         .then((data) => {
