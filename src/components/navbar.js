@@ -23,7 +23,7 @@ export default function ButtonAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1, letterSpacing: "0.1rem", color: theme.palette.primary.main }}>
-            Hire<span style={{ fontWeight: "lighter" }}>Quotient</span>
+            JD<span style={{ fontWeight: "lighter" }}>Parser</span>
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>
