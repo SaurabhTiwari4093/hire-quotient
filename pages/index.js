@@ -2,10 +2,12 @@ import { useState } from 'react';
 import Navbar from '../src/components/navbar';
 import theme from '../src/theme';
 import { Container, Box, Typography, Button, CircularProgress } from '@mui/material';
+import { useRouter } from 'next/router';
 
 
 export default function Index() {
   const [loading, setLoading] = useState(false);
+  const router= useRouter();
 
   const getParseJD = async (pdfData) => {
     try {
@@ -21,6 +23,10 @@ export default function Index() {
         .then((data) => {
           if (data.status === 200) {
             // console.log(data)
+            router.push({
+              pathname:'/parseResult',
+              query:{keywords:data.pdfText}
+            })
             setLoading(false);
           }
           else {
